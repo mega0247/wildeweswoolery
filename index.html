@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mystery Shopper Application</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("qc9QpFrqTZGUUNEHA"); // Replace with your EmailJS Public Key
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Join Our Mystery Shopper Team</h1>
+    <p>Fill out the form below to apply.</p>
+    <form id="jobForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="text" name="phone" placeholder="Phone Number" required />
+
+      <div class="address-group">
+        <input type="text" name="city" placeholder="City" required />
+        <input type="text" name="state" placeholder="State" required />
+        <input type="text" name="zip" placeholder="Zip Code" required />
+      </div>
+
+      <textarea name="message" placeholder="Why would you be a great mystery shopper?" required></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+    <div id="responseMsg"></div>
+  </div>
+
+  <script>
+    document.getElementById('jobForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_sffshmm', 'template_rve2nn1', this)
+        .then(function() {
+          document.getElementById('responseMsg').textContent = '✅ Application sent successfully!';
+          document.getElementById('jobForm').reset();
+        }, function(error) {
+          document.getElementById('responseMsg').textContent = '❌ Failed to send: ' + error.text;
+        });
+    });
+  </script>
+</body>
+</html>
