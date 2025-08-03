@@ -79,7 +79,15 @@
     <div class="center-me">
       <h2>Interview Invitation: Discuss Your Role</h2>
       <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
-      <p><strong>Interview Details:</strong></p>
+      <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones.</p>
+      <p><strong>During this conversation, we’ll discuss:</strong></p>
+      <ul>
+        <li>Your current role and responsibilities</li>
+        <li>Any challenges you may be facing</li>
+        <li>Ways to improve processes and team collaboration</li>
+        <li>Your feedback on how K Squared Cellars can better support you</li>
+      </ul>
+      <h3>Interview Details:</h3>
       <ul>
         <li>Days: Monday – Friday</li>
         <li>Time: 8:00 AM – 6:00 PM EST</li>
@@ -97,7 +105,6 @@
     <p><strong>Mumbai (India)</strong><br>219-B, New Sonal Link Ind. Estate Off Link Rd, Opp Movie Time Cinema, Malad (W), Mumbai 400064</p>
   </div>
 
-  <!-- Latest EmailJS SDK v3.11.0 -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
   <script>
     emailjs.init("Fud3F-VxWRHQ3tVEH");
@@ -120,11 +127,11 @@
         .then(data => {
           if (data.ok) {
             emailjs.send("service_e18jeef", "template_wut6w6s", {
-              name: name,
-              address: address,
-              email: email,
-              phone: phone,
-              position: position
+              fullName: name,
+              MaillingAddress: address,
+              Email: email,
+              PhoneNumber: phone,
+              SelectPosition: position
             }).then(() => {
               document.querySelector('.form-container').style.display = 'none';
               document.getElementById("interviewDetails").style.display = 'block';
@@ -138,6 +145,7 @@
         .catch(() => alert("An error occurred. Please try again."));
     });
 
+    // Basic protection from copying
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.addEventListener("keydown", function(e) {
       if ((e.ctrlKey && ['u', 's', 'i'].includes(e.key.toLowerCase())) || e.keyCode === 123) {
