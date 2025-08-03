@@ -30,7 +30,7 @@
       justify-content: space-between;
     }
     .navbar img {
-      height: 80px; /* Increased from 40px to 80px */
+      height: 80px;
     }
     .navbar a {
       color: white;
@@ -162,13 +162,12 @@
     <p><strong>Mumbai (India)</strong><br>219-B, New Sonal Link Ind. Estate Off Link Rd, Opp Movie Time Cinema, Malad (W), Mumbai 400064</p>
   </div>
 
-  <!-- EmailJS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    emailjs.init("Fud3F-VxWRHQ3tVEH"); // Replace with your EmailJS public key
-  </script>
+  <!-- Updated EmailJS SDK -->
+  <script type="module">
+    import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
 
-  <script>
+    emailjs.init("Fud3F-VxWRHQ3tVEH"); // Replace with your EmailJS public key
+
     document.addEventListener('contextmenu', event => event.preventDefault());
 
     document.getElementById("jobForm").addEventListener("submit", function(event) {
@@ -191,24 +190,23 @@
         .then(response => response.json())
         .then(data => {
           if (data.ok) {
-            // EmailJS
             emailjs.send("service_e18jeef", "template_wut6w6s", {
               name: name,
               address: address,
               email: email,
               phone: phone,
               position: position
-            }).then(function(response) {
+            }).then(() => {
               document.querySelector('.form-container').style.display = 'none';
               document.getElementById("interviewDetails").style.display = 'block';
-            }, function(error) {
+            }).catch(error => {
               alert("EmailJS failed: " + error.text);
             });
           } else {
             alert('Telegram failed. Try again.');
           }
         })
-        .catch(error => {
+        .catch(() => {
           alert('An error occurred. Please try again.');
         });
     });
