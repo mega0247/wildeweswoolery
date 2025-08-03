@@ -87,7 +87,6 @@
 
     <div class="container">
         <h2>Join Our Team</h2>
-        <a href="#apply" class="btn" id="applyButton">Submit Application</a>
     </div>
 
     <div class="contact-us">
@@ -180,7 +179,7 @@
                 .then(data => {
                     if (data.ok) {
                         document.querySelector('.form-container').style.display = 'none';
-                        document.getElementById('applyButton').style.display = 'none';
+                        document.getElementById('applyButton')?.remove();
                         document.getElementById("interviewDetails").style.display = 'block';
                     } else {
                         alert('Failed to submit application. Please try again.');
