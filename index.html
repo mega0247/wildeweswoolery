@@ -15,76 +15,19 @@
   <link rel="canonical" href="https://wildeweswoolery.com/careers" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar {
-      background-color: #003366;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .navbar img {
-      height: 80px;
-    }
-    .navbar a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .form-container {
-      max-width: 500px;
-      margin: 40px auto;
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    }
-    .form-container h2 {
-      text-align: center;
-      color: #003366;
-    }
-    .form-container input,
-    .form-container select,
-    .form-container button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .form-container button {
-      background-color: #003366;
-      color: white;
-      cursor: pointer;
-    }
-    .success-message {
-      display: none;
-      color: green;
-      text-align: center;
-    }
-    .interview-details,
-    .contact-page {
-      display: none;
-      padding: 30px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .center-me {
-      text-align: left;
-    }
-    .contact-page h2 {
-      color: #003366;
-    }
+    body { font-family: Arial, sans-serif; background-color: #fff; margin: 0; padding: 0; }
+    .navbar { background-color: #003366; color: white; padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
+    .navbar img { height: 80px; }
+    .navbar a { color: white; margin-left: 20px; text-decoration: none; font-weight: bold; }
+    .form-container { max-width: 500px; margin: 40px auto; background-color: #f9f9f9; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+    .form-container h2 { text-align: center; color: #003366; }
+    .form-container input, .form-container select, .form-container button { width: 100%; padding: 10px; margin-top: 15px; border: 1px solid #ccc; border-radius: 5px; }
+    .form-container button { background-color: #003366; color: white; cursor: pointer; }
+    .success-message { display: none; color: green; text-align: center; }
+    .interview-details, .contact-page { display: none; padding: 30px; max-width: 800px; margin: 0 auto; }
+    .center-me { text-align: left; }
+    .contact-page h2 { color: #003366; }
   </style>
-
-  <!-- LiveChat -->
   <script>
     window.__lc = window.__lc || {};
     window.__lc.license = 16972020;
@@ -136,15 +79,7 @@
     <div class="center-me">
       <h2>Interview Invitation: Discuss Your Role</h2>
       <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
-      <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones.</p>
-      <p><strong>During this conversation, we’ll discuss:</strong></p>
-      <ul>
-        <li>Your current role and responsibilities</li>
-        <li>Any challenges you may be facing</li>
-        <li>Ways to improve processes and team collaboration</li>
-        <li>Your feedback on how K Squared Cellars can better support you</li>
-      </ul>
-      <h3>Interview Details:</h3>
+      <p><strong>Interview Details:</strong></p>
       <ul>
         <li>Days: Monday – Friday</li>
         <li>Time: 8:00 AM – 6:00 PM EST</li>
@@ -162,31 +97,24 @@
     <p><strong>Mumbai (India)</strong><br>219-B, New Sonal Link Ind. Estate Off Link Rd, Opp Movie Time Cinema, Malad (W), Mumbai 400064</p>
   </div>
 
-  <!-- Updated EmailJS SDK -->
-  <script type="module">
-    import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
-
-    emailjs.init("Fud3F-VxWRHQ3tVEH"); // Replace with your EmailJS public key
-
-    document.addEventListener('contextmenu', event => event.preventDefault());
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    emailjs.init("Fud3F-VxWRHQ3tVEH");
 
     document.getElementById("jobForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
-      let name = document.getElementById("name").value;
-      let address = document.getElementById("address").value;
-      let email = document.getElementById("email").value;
-      let phone = document.getElementById("phone").value;
-      let position = document.getElementById("position").value;
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const position = document.getElementById("position").value;
 
-      let message = `New Application:\nName: ${name}\nAddress: ${address}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${position}`;
+      const message = `New application received:%0AName: ${name}%0AAddress: ${address}%0AEmail: ${email}%0APhone: ${phone}%0AJob: ${position}`;
 
-      // Telegram
-      let telegram_token = "6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4";
-      let telegram_chat_id = "1461764555";
-      let telegram_url = `https://api.telegram.org/bot${telegram_token}/sendMessage?chat_id=${telegram_chat_id}&text=${encodeURIComponent(message)}`;
+      const telegramURL = `https://api.telegram.org/bot6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4/sendMessage?chat_id=1461764555&text=${message}`;
 
-      fetch(telegram_url)
+      fetch(telegramURL)
         .then(response => response.json())
         .then(data => {
           if (data.ok) {
@@ -199,16 +127,21 @@
             }).then(() => {
               document.querySelector('.form-container').style.display = 'none';
               document.getElementById("interviewDetails").style.display = 'block';
-            }).catch(error => {
+            }, (error) => {
               alert("EmailJS failed: " + error.text);
             });
           } else {
-            alert('Telegram failed. Try again.');
+            alert("Telegram failed. Try again later.");
           }
         })
-        .catch(() => {
-          alert('An error occurred. Please try again.');
-        });
+        .catch(() => alert("An error occurred. Please try again."));
+    });
+
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("keydown", function(e) {
+      if ((e.ctrlKey && ['u', 's', 'i'].includes(e.key.toLowerCase())) || e.keyCode === 123) {
+        e.preventDefault();
+      }
     });
   </script>
 </body>
