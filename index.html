@@ -30,7 +30,7 @@
       justify-content: space-between;
     }
     .navbar img {
-      height: 40px;
+      height: 80px; /* Increased from 40px to 80px */
     }
     .navbar a {
       color: white;
@@ -165,7 +165,7 @@
   <!-- EmailJS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your public EmailJS key
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
   </script>
 
   <script>
@@ -191,7 +191,7 @@
         .then(response => response.json())
         .then(data => {
           if (data.ok) {
-            // Send to EmailJS too
+            // EmailJS
             emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
               name: name,
               address: address,
