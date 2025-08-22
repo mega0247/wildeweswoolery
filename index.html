@@ -52,22 +52,23 @@
       }
     }
     .form-container {
-      max-width: 90%;
-      margin: 20px auto;
+      max-width: 600px;
+      width: 90%;
+      margin: 40px auto;
       background-color: #f9f9f9;
-      padding: 20px;
+      padding: 30px;
       border-radius: 8px;
       box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     }
     .form-container h2 {
       text-align: center;
       color: #003366;
-      font-size: 20px;
+      font-size: 22px;
     }
     .form-container input, .form-container select, .form-container button {
       width: 100%;
       padding: 12px;
-      margin-top: 12px;
+      margin-top: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 16px;
@@ -89,7 +90,7 @@
     .interview-details, .contact-page {
       display: none;
       padding: 20px;
-      max-width: 95%;
+      max-width: 800px;
       margin: 0 auto;
       font-size: 16px;
     }
@@ -104,13 +105,13 @@
       padding: 15px;
       border: 1px solid #ccd9f5;
       border-radius: 6px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       font-size: 15px;
       color: #003366;
     }
     @media (max-width: 600px) {
       .form-container {
-        padding: 15px;
+        padding: 20px;
       }
       .form-container h2 {
         font-size: 18px;
@@ -232,7 +233,6 @@
         .catch(() => alert("An error occurred. Please try again."));
     });
 
-    // Disable right-click and certain keys
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.addEventListener("keydown", function(e) {
       if ((e.ctrlKey && ['u', 's', 'i'].includes(e.key.toLowerCase())) || e.keyCode === 123) {
