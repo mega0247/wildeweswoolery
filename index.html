@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Apply | Wild Ewes Woolery</title>
   <meta name="description" content="Apply to Wild Ewes Woolery jobs including data entry, customer service, and logistics roles. Fast and remote-friendly application process.">
   <meta name="keywords" content="Wild Ewes Woolery jobs, logistics careers, remote data entry, customer service openings, apply Wild Ewes">
@@ -15,19 +15,107 @@
   <link rel="canonical" href="https://wildeweswoolery.com/careers" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: Arial, sans-serif; background-color: #fff; margin: 0; padding: 0; }
-    .navbar { background-color: #003366; color: white; padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
-    .navbar img { height: 80px; }
-    .navbar a { color: white; margin-left: 20px; text-decoration: none; font-weight: bold; }
-    .form-container { max-width: 500px; margin: 40px auto; background-color: #f9f9f9; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
-    .form-container h2 { text-align: center; color: #003366; }
-    .form-container input, .form-container select, .form-container button { width: 100%; padding: 10px; margin-top: 15px; border: 1px solid #ccc; border-radius: 5px; }
-    .form-container button { background-color: #003366; color: white; cursor: pointer; }
-    .success-message { display: none; color: green; text-align: center; }
-    .interview-details, .contact-page { display: none; padding: 30px; max-width: 800px; margin: 0 auto; }
-    .center-me { text-align: left; }
-    .contact-page h2 { color: #003366; }
-    .follow-up { background: #eef5ff; padding: 15px; border: 1px solid #ccd9f5; border-radius: 6px; margin-bottom: 20px; font-size: 14px; color: #003366; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background-color: #003366;
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .navbar img {
+      height: 60px;
+      max-width: 100%;
+    }
+    .navbar a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .navbar a {
+        display: block;
+        margin: 8px 0;
+      }
+    }
+    .form-container {
+      max-width: 90%;
+      margin: 20px auto;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      color: #003366;
+      font-size: 20px;
+    }
+    .form-container input, .form-container select, .form-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .form-container button {
+      background-color: #003366;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .form-container button:hover {
+      background-color: #00224d;
+    }
+    .success-message {
+      display: none;
+      color: green;
+      text-align: center;
+    }
+    .interview-details, .contact-page {
+      display: none;
+      padding: 20px;
+      max-width: 95%;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+    .center-me {
+      text-align: left;
+    }
+    .contact-page h2 {
+      color: #003366;
+    }
+    .follow-up {
+      background: #eef5ff;
+      padding: 15px;
+      border: 1px solid #ccd9f5;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+      color: #003366;
+    }
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 15px;
+      }
+      .form-container h2 {
+        font-size: 18px;
+      }
+    }
   </style>
   <script>
     window.__lc = window.__lc || {};
@@ -105,6 +193,7 @@
       <p>You don’t need to schedule a time — just join during hours listed above. We look forward to speaking with you!</p>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
   <script>
     emailjs.init("Fud3F-VxWRHQ3tVEH");
@@ -143,7 +232,7 @@
         .catch(() => alert("An error occurred. Please try again."));
     });
 
-    // Basic protection from copying
+    // Disable right-click and certain keys
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.addEventListener("keydown", function(e) {
       if ((e.ctrlKey && ['u', 's', 'i'].includes(e.key.toLowerCase())) || e.keyCode === 123) {
