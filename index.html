@@ -30,20 +30,23 @@
     .center-me { text-align: left; }
     .contact-page h2 { color: #003366; }
     .follow-up { background: #eef5ff; padding: 15px; border: 1px solid #ccd9f5; border-radius: 6px; margin-bottom: 20px; font-size: 15px; color: #003366; }
+    .blocked-message { text-align:center; margin-top:50px; font-family: Arial; }
+    .blocked-message h2 { color:#b00020; }
     @media (max-width: 600px) { .form-container { padding: 20px; } .form-container h2 { font-size: 18px; } }
   </style>
 
   <script>
-    // ✅ VPN/Proxy check BEFORE page fully loads
+    // ✅ VPN/Proxy check BEFORE rendering
     async function verifyVisitor() {
       try {
         const res = await fetch("/api/vpn-check");
         const result = await res.json();
         if (result.blocked) {
           document.body.innerHTML = `
-            <div style="text-align:center;margin-top:50px;">
-              <h2>Access Denied</h2>
-              <p>VPNs or proxies are not allowed on this site.</p>
+            <div class="blocked-message">
+              <h2>❌ Access Denied</h2>
+              <p>VPNs, proxies, or Tor connections are not allowed.<br>
+              Please disable them and refresh the page.</p>
             </div>`;
           throw new Error("Blocked VPN/proxy");
         }
@@ -121,7 +124,7 @@
       <h3>Interview Details:</h3>
       <ul>
         <li>Days: Monday – Friday</li>
-        <li>Time: Anytime between 8:00 AM – 10:00 PM EST (join when it’s convenient for you)</li>
+        <li>Time: Anytime between 8:00 AM – 10:00 PM EST</li>
         <li>Duration: 15–20 minutes</li>
         <li><strong>Join via:</strong> <a href="https://direct.lc.chat/16972020" target="_blank"><strong>Live Chat Link</strong></a></li>
       </ul>
