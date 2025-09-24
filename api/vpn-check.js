@@ -23,12 +23,14 @@ export default async function handler(req, res) {
 
     console.log("🔎 VPN Check:", { clientIP, data });
 
-    // ✅ Block only if VPN/Proxy/Tor confirmed AND fraud score is very high
-    const isBlocked =
-      (data.vpn === true || data.proxy === true || data.tor === true) &&
-      data.fraud_score >= 90;
+    // ✅ Block ONLY if IPQS confirms VPN, Proxy, or Tor.
+    const isBlocked = data.vpn === true || data.proxy === true || data.tor === true;
 
-    res.status(200).json({ blocked: isBlocked, reason: isBlocked ? "flagged" : "clean", data });
+    res.status(200).json({
+      blocked: isBlocked,
+      reason: isBlocked ? "vpn-proxy-tor" : "clean",
+      data,
+    });
   } catch (err) {
     console.error("VPN Check Error:", err);
     res.status(200).json({ blocked: false, reason: "error" });
