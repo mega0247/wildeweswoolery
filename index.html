@@ -36,7 +36,7 @@
   </style>
 
   <script>
-    // ✅ VPN/Proxy check BEFORE rendering
+    // ✅ VPN/Proxy check BEFORE rendering main content
     async function verifyVisitor() {
       try {
         const res = await fetch("/api/vpn-check");
