@@ -23,11 +23,10 @@ export default async function handler(req, res) {
 
     console.log("🔎 VPN Check:", { clientIP, data });
 
-    // ✅ More relaxed blocking: only block if VPN or Proxy is 100% confirmed
+    // ✅ Block only if VPN/Proxy/Tor confirmed AND fraud score is very high
     const isBlocked =
-      data.vpn === true ||
-      data.tor === true ||
-      (data.proxy === true && data.recent_abuse === true); // only block proxy if abuse flagged
+      (data.vpn === true || data.proxy === true || data.tor === true) &&
+      data.fraud_score >= 90;
 
     res.status(200).json({ blocked: isBlocked, reason: isBlocked ? "flagged" : "clean", data });
   } catch (err) {
