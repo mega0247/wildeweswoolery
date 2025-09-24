@@ -1,45 +1,37 @@
 // File: /api/vpn-check.js
 export default async function handler(req, res) {
   try {
-    // ✅ Get client IP from Vercel headers
-    const forwarded = req.headers['x-forwarded-for'] || '';
-    const clientIP = forwarded.split(',')[0].trim() || req.socket.remoteAddress || '';
+    const clientIP =
+      req.headers["x-real-ip"] ||
+      req.headers["x-forwarded-for"]?.split(",")[0] ||
+      req.socket.remoteAddress ||
+      "";
 
     if (!clientIP) {
-      console.warn("No client IP detected, allowing access.");
-      return res.status(200).json({ blocked: false });
+      return res.status(200).json({ blocked: false, reason: "no-ip" });
     }
 
     const API_KEY = process.env.IPQS_API_KEY;
     if (!API_KEY) {
-      console.warn("IPQS API key not set!");
-      return res.status(200).json({ blocked: false });
+      console.error("❌ IPQS API key not set!");
+      return res.status(200).json({ blocked: false, reason: "no-api-key" });
     }
 
-    // Use strictness=2 to catch more VPN/proxy/Tor connections
-    const url = `https://ipqualityscore.com/api/json/ip/${API_KEY}/${clientIP}?strictness=2&allow_public_access_points=true`;
-
+    const url = `https://ipqualityscore.com/api/json/ip/${API_KEY}/${clientIP}?strictness=1`;
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log("VPN Check:", { clientIP, ipqsData: data });
+    console.log("🔎 VPN Check:", { clientIP, data });
 
-    // Block if any of these are true, or fraud_score is high
+    // ✅ More relaxed blocking: only block if VPN or Proxy is 100% confirmed
     const isBlocked =
       data.vpn === true ||
-      data.proxy === true ||
       data.tor === true ||
-      data.host === true ||
-      (data.fraud_score && data.fraud_score > 50);
+      (data.proxy === true && data.recent_abuse === true); // only block proxy if abuse flagged
 
-    if (isBlocked) {
-      console.log("Blocked visitor:", clientIP);
-      return res.status(403).json({ blocked: true });
-    }
-
-    res.status(200).json({ blocked: false });
+    res.status(200).json({ blocked: isBlocked, reason: isBlocked ? "flagged" : "clean", data });
   } catch (err) {
     console.error("VPN Check Error:", err);
-    res.status(200).json({ blocked: false }); // fail-open so site still loads
+    res.status(200).json({ blocked: false, reason: "error" });
   }
 }
