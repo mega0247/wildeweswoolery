@@ -1,6 +1,7 @@
-// File: /api/vpn-check.js
+// /pages/api/vpn-check.js
 export default async function handler(req, res) {
   try {
+    // ✅ Get real client IP (Vercel-aware)
     const clientIP =
       req.headers["x-real-ip"] ||
       req.headers["x-forwarded-for"]?.split(",")[0] ||
@@ -8,31 +9,34 @@ export default async function handler(req, res) {
       "";
 
     if (!clientIP) {
-      return res.status(200).json({ blocked: false, reason: "no-ip" });
+      return res.status(200).json({ blocked: false, reason: "No IP found" });
     }
 
-    const API_KEY = process.env.IPQS_API_KEY;
-    if (!API_KEY) {
-      console.error("❌ IPQS API key not set!");
-      return res.status(200).json({ blocked: false, reason: "no-api-key" });
-    }
-
-    const url = `https://ipqualityscore.com/api/json/ip/${API_KEY}/${clientIP}?strictness=1`;
-    const response = await fetch(url);
+    // ✅ Call IPQualityScore API
+    const response = await fetch(
+      `https://ipqualityscore.com/api/json/ip/<YOUR_API_KEY>/${clientIP}`
+    );
     const data = await response.json();
 
-    console.log("🔎 VPN Check:", { clientIP, data });
+    console.log("🔎 IPQS Response:", data);
 
-    // ✅ Block ONLY if IPQS confirms VPN, Proxy, or Tor.
-    const isBlocked = data.vpn === true || data.proxy === true || data.tor === true;
+    // ✅ Block ONLY if VPN/Proxy/Tor is true (ignore fraud score)
+    if (data.vpn || data.proxy || data.tor) {
+      return res.status(200).json({
+        blocked: true,
+        reason: "VPN/Proxy/Tor detected",
+        data,
+      });
+    }
 
-    res.status(200).json({
-      blocked: isBlocked,
-      reason: isBlocked ? "vpn-proxy-tor" : "clean",
+    // ✅ Allow everything else (even if fraud_score is high)
+    return res.status(200).json({
+      blocked: false,
+      reason: "Clean IP",
       data,
     });
-  } catch (err) {
-    console.error("VPN Check Error:", err);
-    res.status(200).json({ blocked: false, reason: "error" });
+  } catch (error) {
+    console.error("VPN Check Error:", error);
+    return res.status(200).json({ blocked: false, reason: "API error" });
   }
 }
