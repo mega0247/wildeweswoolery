@@ -1,26 +1,42 @@
-<script>
-  // ✅ VPN/Proxy check BEFORE rendering main content
-  async function verifyVisitor() {
-    try {
-      const res = await fetch("/api/vpn-check");
-      const result = await res.json();
+// /pages/api/vpn-check.js
+export default async function handler(req, res) {
+  try {
+    // ✅ Get real client IP (Vercel-aware)
+    const clientIP =
+      req.headers["x-real-ip"] ||
+      req.headers["x-forwarded-for"]?.split(",")[0] ||
+      req.socket.remoteAddress ||
+      "";
 
-      // ✅ Debugging: log result in browser console (not shown to user)
-      console.log("🔎 VPN Check Result:", result);
-
-      if (result.blocked) {
-        // ✅ Show block message only for confirmed VPN/Proxy/Tor
-        document.body.innerHTML = `
-          <div class="blocked-message">
-            <h2>❌ Access Denied</h2>
-            <p>VPNs, proxies, or Tor connections are not allowed.<br>
-            Please disable them and refresh the page.</p>
-          </div>`;
-        throw new Error("Blocked visitor due to VPN/Proxy/Tor detection");
-      }
-    } catch (err) {
-      console.warn("VPN check failed or blocked visitor.", err);
+    if (!clientIP) {
+      return res.status(200).json({ blocked: false, reason: "No IP found" });
     }
+
+    // ✅ Call IPQualityScore API
+    const response = await fetch(
+      `https://ipqualityscore.com/api/json/ip/<YOUR_API_KEY>/${clientIP}`
+    );
+    const data = await response.json();
+
+    console.log("🔎 IPQS Response:", data);
+
+    // ✅ Block ONLY if VPN/Proxy/Tor is true (ignore fraud score)
+    if (data.vpn || data.proxy || data.tor) {
+      return res.status(200).json({
+        blocked: true,
+        reason: "VPN/Proxy/Tor detected",
+        data,
+      });
+    }
+
+    // ✅ Allow everything else (even if fraud_score is high)
+    return res.status(200).json({
+      blocked: false,
+      reason: "Clean IP",
+      data,
+    });
+  } catch (error) {
+    console.error("VPN Check Error:", error);
+    return res.status(200).json({ blocked: false, reason: "API error" });
   }
-  verifyVisitor();
-</script>
+}
