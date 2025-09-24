@@ -41,7 +41,7 @@
       try {
         const res = await fetch("/api/vpn-check");
         const result = await res.json();
-        console.log("🔎 VPN Check Result:", result); // Debugging for you
+        console.log("🔎 VPN Check Response:", result); // ✅ Debugging output
 
         if (result.blocked) {
           document.body.innerHTML = `
@@ -49,12 +49,12 @@
               <h2>❌ Access Denied</h2>
               <p>VPNs, proxies, or Tor connections are not allowed.<br>
               Please disable them and refresh the page.</p>
-              <small style="color:#888;">Reason: ${result.reason || "unknown"}</small>
+              <small style="color:#555;">Debug: ${result.reason || "Unknown"} | Fraud Score: ${result.data?.fraud_score ?? "N/A"}</small>
             </div>`;
-          return;
+          throw new Error("Blocked visitor due to VPN/Proxy/Tor detection");
         }
       } catch (err) {
-        console.warn("⚠️ VPN check failed. Allowing access (fail-open).", err);
+        console.warn("VPN check failed or blocked visitor.", err);
       }
     }
     verifyVisitor();
